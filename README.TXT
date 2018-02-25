@@ -1,12 +1,20 @@
-------------------------------------------------------------------------
-This is the project README file. Here, you should describe your project.
-Tell the reader (someone who does not know anything about this project)
-all he/she needs to know. The comments should usually include at least:
-------------------------------------------------------------------------
+Write a function that provides change directory (cd) function for an abstract file system
 
-PROJECT TITLE:
-PURPOSE OF PROJECT:
-VERSION or DATE:
-HOW TO START THIS PROJECT:
-AUTHORS:
-USER INSTRUCTIONS:
+notes:
+
+- Root path is '/'
+- Path seperator is '/'
+- Parent direcotry is addressable as ".."
+- Directory names consist only of English alphabet letters (A-Z and a-z)
+- The function should support both relative and absolute paths
+- The function will not be passed any invalid paths
+- Do not use built-in path-related functions
+
+For example:
+Path path = new Path("a/b/c/d");
+
+path.cd("../x");
+
+console.WriteLine(path.CurrentPath);
+
+should display 'a/b/c/x'
