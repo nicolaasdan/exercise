@@ -5,6 +5,10 @@
  * nicolaas danneels
  * 25/02/2018
  */
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Path
 {
     // instance variables
@@ -20,33 +24,22 @@ public class Path
     
     public String cd(String new_path)
     {
-        String[] new_ary = new_path.split("/");
-        String[] cur_ary = cur_path.split("/");
-        String[] return_ary;
-        int j = cur_ary.length;
+        List <String> new_ary = new ArrayList(Arrays.asList(new_path.split("/")));
+        List <String> cur_ary = new ArrayList(Arrays.asList(cur_path.split("/")));
         
-        for(int i=0; i < new_ary.length; i++)
+        for(int i=0; i < new_ary.size(); i++)
         {
-            if(new_ary[i].equals(".."))
+            if(new_ary.get(i).equals(".."))
             {
-                //decrease length of cur_ary
-                j = j - 1;
+                cur_ary.remove(cur_ary.size() - 1);
             }
             else 
             {
-                //replace el from cur_ary
-                cur_ary[cur_ary.length - i - 1] = new_ary[i];
+                cur_ary.add(new_ary.get(i));
             }
         }
         
-        //new array with length j
-        return_ary = new String[j];
-        for(int k = 0; k < j; k++)
-        {
-            return_ary[k] = cur_ary[k];
-        }
-        
-        String str = String.join("/", return_ary);
+        String str = String.join("/", cur_ary);
         return str;
     }
 }
